@@ -7,28 +7,28 @@
 
     <div class="login">
       <form
-        method="post"
-        onsubmit="return checkForm()"
+        :rules="rules"
+        ref="ruleForm"
+        :model="ruleForm"
+        label-width="80px"
+        class="login-form"
       >
-        <input
+        <!-- <input
           type="hidden"
           name="back_url"
-        />
+        /> -->
         <input
-          type="text"
-          name="username"
-          id="username"
+        v-model="ruleForm.name"
           class="text"
           placeholder="请输入手机号"
         />
         <input
           type="password"
-          name="pwd"
-          id="pwd"
+          v-model="ruleForm.password"
           class="text"
           placeholder="请输入密码"
         />
-        <input type="button" class="button" value="登录" />
+        <input  class="button" type="primary" @click="submitForm('ruleForm')" value="登录" />
       </form>
       <ul class="clearfix link">
         <li><a href="">立即注册</a></li>
@@ -63,12 +63,79 @@
 <script>
 export default {
   data() {
-    return {};
+    return {ruleForm: {
+        name: "",
+        password: ""
+      },
+      rules: {
+        name: [
+          { required: true, message: "请输入账号", trigger: "blur" },
+          { min: 3, max: 8, message: "长度在 3 到 8 个字符", trigger: "blur" }
+        ],
+        password: [{ required: true, message: "请输入密码", trigger: "blur" }]
+      }};
   },
 
   components: {},
 
-  methods: {},
+  methods: {// 注意：按钮上调用的函数名要一致 submitForm
+    submitForm(ruleForm) {
+      this.$refs[ruleForm].validate(valid => {
+        if (valid) {
+          // console.log(
+          //   loginApi.loginIn(this.ruleForm.name, this.ruleForm.password)
+          // );
+          loginApi
+            .loginIn(this.ruleForm.name, this.ruleForm.password)
+            .then(res => {
+              // console.log(res);
+              this.checkLogin();
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        } else {
+          console.log("error");
+          return false;
+        }
+      });
+    },
+    resetForm(ruleForm) {
+      this.$refs[ruleForm].resetFields();
+    },
+    async checkLogin() {
+      try {
+        let p = await loginApi.loginIn(
+          this.ruleForm.name,
+          this.ruleForm.password
+        );
+        if (p.data.flag) {
+          // $route.push('/');
+          this.checkToken(p.data.data.token);
+          // console.log(p.data.data.token);
+        } else {
+          alert("验证失败");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    // async checkToken(token) {
+    //   try {
+    //     let p = await loginApi.getUserInf(token);
+    //     if (p.data.flag) {
+    //       // alert("登陆成功");
+    //       this.$router.push("/home");
+    //       localStorage.setItem("swt100-id", p.data.data.id);
+    //       localStorage.setItem("swt100-token", token);
+    //     } else {
+    //       alert("登陆失败");
+    //     }
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // }
+  }
 };
 </script>
 
