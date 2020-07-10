@@ -3,14 +3,19 @@
     <ul>
       <li>
         <el-row>
-          <el-col :span="8" v-for="(o, index) in dtlist" :key="index" :offset="index > 0 ? 2 : 0">
+          <el-col
+            :span="8"
+            v-for="(o, index) in dtlist"
+            :key="index"
+            :offset="index > 0 ? 2 : 0"
+          >
             <el-card :body-style="{ padding: '0px' }">
               <img :src="o.pic" class="image" @click="godetail(index)" />
               <div style="padding: 14px;" @click="godetail(index)">
-                <span>{{ o.gdname}}</span>
+                <span>{{ o.gdname }}</span>
                 <div class="bottom clearfix">
-                  <p>{{o.price}}</p>
-                  <i>￥{{o.oldprice}}</i>
+                  <p>{{ o.price }}</p>
+                  <i>￥{{ o.oldprice }}</i>
                 </div>
               </div>
             </el-card>
@@ -31,21 +36,21 @@ export default {
           price: "45.00",
           oldprice: "62.5",
           pic:
-            "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            "https://oss.swt100.com/images/goods/thumb_img/85b05961cb1e7e800f6ab4adc77a5a5434360210.jpeg"
         },
         {
           gdname: "四川攀枝花 大贵妃芒 5斤/8斤装",
           price: "45.00",
           oldprice: "62.5",
           pic:
-            "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            "https://oss.swt100.com/images/goods/thumb_img/596d5f3936cc5542efd4a09e904563f00450bbae.jpeg"
         },
         {
           gdname: "四川攀枝花 大贵妃芒 5斤/8斤装",
           price: "45.00",
           oldprice: "62.5",
           pic:
-            "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            "https://oss.swt100.com/images/goods/thumb_img/25c622c132bb03558ea3bf016988b7a86642a2cb.jpeg"
         }
       ]
     };

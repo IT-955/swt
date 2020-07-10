@@ -1,6 +1,6 @@
 <template>
   <div class="gg_pic teaser is-visible">
-                    <a href=""><img src="https://oss.swt100.com/images/mad/20200624/592978f7439f7770060d031f2f844e9a93f73bc0.jpg"></a>
+                    <a href=""><img src="https://oss.swt100.com/images/mad/20200707/4cbcd13bd65f05802557d4d36cd055aced7fe3db.png"></a>
                 </div>
 </template>
 

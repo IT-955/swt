@@ -1,7 +1,7 @@
 <template>
   <div>
     <Hheader />
-    <!-- <Banner /> -->
+    <Banner />
     <Hnav />
     <Seckill />
     <Hlist />
@@ -16,6 +16,7 @@
 
 <script>
 import Hheader from "../../components/home/Hheader";
+import Banner from "../../components/home/Banner";
 import Hnav from "../../components/home/Hnav";
 import Seckill from "../../components/home/Seckill";
 import Hlist from "../../components/home/Hlist";
@@ -32,7 +33,7 @@ export default {
 
   components: {
     Hheader,
-    // Banner,
+    Banner,
     Hnav,
     Seckill,
     Hlist,

@@ -1,34 +1,62 @@
 <template>
-  <div class="swiper-container banner swiper-container-horizontal">
-		<div class="swiper-wrapper" style="transform: translate3d(-1125px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="3" style="width: 375px;"><a href="/goods/details/goods_id/935"><img src="https://oss.swt100.com/images/mad/20200608/68382a070b855578cbfe390a13a964a13aaa8215.jpg" alt="首页banner广告图-4"></a></div>
-						<div class="swiper-slide" data-swiper-slide-index="0" style="width: 375px;"><a href="/goods/details/goods_id/970"><img src="https://oss.swt100.com/images/mad/20200608/4b32b1e9f30bd267cf429d5270e6c624ee13a5e1.jpg" alt="首页banner广告图-1"></a></div>
-						<div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" style="width: 375px;"><a href="/goods/details/goods_id/871"><img src="https://oss.swt100.com/images/mad/20200608/1a766f0c07a90811d280ddb15ad973227ef12e90.jpg" alt="首页banner广告图-2"></a></div>
-						<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" style="width: 375px;"><a href="/goods/details/goods_id/70"><img src="https://oss.swt100.com/images/mad/20200608/f8569de9bc2e7d9f8eb9cd63daf1a71a0887b8b0.jpg" alt="首页banner广告图-3"></a></div>
-						<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="3" style="width: 375px;"><a href="/goods/details/goods_id/935"><img src="https://oss.swt100.com/images/mad/20200608/68382a070b855578cbfe390a13a964a13aaa8215.jpg" alt="首页banner广告图-4"></a></div>
-					<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="0" style="width: 375px;"><a href="/goods/details/goods_id/970"><img src="https://oss.swt100.com/images/mad/20200608/4b32b1e9f30bd267cf429d5270e6c624ee13a5e1.jpg" alt="首页banner广告图-1"></a></div></div>
-		<div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span></div>
-	</div>
+  <div>
+    <div class="block">
+      <!-- <span class="demonstration">Click 指示器触发</span> -->
+      <el-carousel trigger="click" height="180px">
+        <el-carousel-item v-for="(item,index) in banner" :key="index">
+          <h3 class="small">
+            <img :src="item.img" alt />
+          </h3>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+  </div>
 </template>
-
 <script>
 export default {
-  data () {
+  data() {
     return {
-    }
+      banner: [
+        {
+          img:
+            "https://oss.swt100.com/images/mad/20200706/09dec1ebe338df7d9da1685c1d83d133c8c3e3ce.jpg"
+        },
+        {
+          img:
+            "https://oss.swt100.com/images/mad/20200706/5881cd244440664ac2e648cbd06319f7724e3e2d.jpg"
+        },
+        {
+          img:
+            "https://oss.swt100.com/images/mad/20200706/bb98954b2de536274df40a2ea18c99318e7a94dd.jpg"
+        },
+        {
+          img:
+            "https://oss.swt100.com/images/mad/20200706/9920637079c1e39e0c846b20af9dc87af62490a9.jpg"
+        }
+      ]
+    };
   },
 
   components: {},
 
   methods: {}
-}
+};
 </script>
 
 <style scoped lang="scss">
-.swiper-container {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 150px;
+  margin: 0;
+}
+
+.el-carousel__item:nth-child(2n) {
+  background-color: #99a9bf;
+}
+
+.el-carousel__item:nth-child(2n + 1) {
+  background-color: #d3dce6;
 }
 </style>

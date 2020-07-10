@@ -3,33 +3,26 @@
     <div class="header">
       <a onclick class="back_btn" @click="goback"></a>
       <div class="h_tit">找回密码</div>
-      <div class="content" >
+      <div class="content">
         <div class="sign">
-          <form action method="post" onsubmit="return checkForm()">
+          <form action method="post" >
             <input
               type="text"
               name="mobile_phone"
               id="mobile_phone"
-              placeholder="手机号"
+              placeholder="新密码"
               onblur
             />
             <div class="yz_box clearfix">
               <input
                 class="fl"
                 type="text"
-                placeholder="验证码"
+                placeholder="确认新密码"
                 name="mobile_code"
-                id="mobile_code"
-              />
-              <input
-                class="fr getCode"
-                type="button"
-                value="获取验证码"
-                onclick
               />
             </div>
             <input
-            @click="forterpwd"
+              @click="forterpwd"
               type="button"
               class="sub_btn"
               style="width:98% ;height:1.2rem"
@@ -54,9 +47,9 @@ export default {
     goback() {
       this.$router.back();
     },
-    forterpwd(){
-      this.$router.push('/forterpwd')
-    }
+    forterpwd() {
+      this.$router.push('/login');
+    },
   },
 };
 </script>
@@ -87,7 +80,7 @@ export default {
   color: #ffffff;
 }
 .sign {
-  margin-top: 0.8rem;
+  margin-top: 0.6rem;
 }
 .sign form {
   padding: 0rem 0.4rem;
@@ -98,7 +91,7 @@ export default {
   background: #fff;
   font-size: 0.3rem;
   margin-bottom: 0.6rem;
-  width: 100%;
+  width:100%;
   height: 1.2rem;
   padding-left: 0.5rem;
   border-radius: 0.6rem;
@@ -106,7 +99,7 @@ export default {
 .sign form .yz_box {
   background: #fff;
   margin-bottom: 0.6rem;
-  width: 85%;
+  width: 86%;
   height: 1.2rem;
   padding: 0 0.5rem;
   border-radius: 0.6rem;
@@ -147,9 +140,9 @@ export default {
   border-radius: 0.6rem;
 }
 .getCode {
-    background: none;
-    color: #c01414;
-    font-size: .36rem;
-    text-align: right;
+  background: none;
+  color: #c01414;
+  font-size: 0.36rem;
+  text-align: right;
 }
 </style>

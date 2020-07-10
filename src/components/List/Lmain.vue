@@ -10,6 +10,7 @@
         <a>{{item}}</a>
       </li>
     </ul>
+
     <div class="gdlist">
       <ul>
         <li v-for="(item,index) in gdlist" :key="index" @click="jumplist()">
@@ -76,9 +77,10 @@ export default {
 .nav {
   width: 100%;
   height: 100%;
+
   ul {
     float: left;
-    height: 13rem;
+    height: 16rem;
     width: 2rem;
     background: #ffffff;
     overflow-y: auto;
@@ -101,6 +103,7 @@ export default {
       }
     }
   }
+
   .gdlist {
     width: 6.4rem;
     float: left;
@@ -136,4 +139,42 @@ export default {
     }
   }
 }
+// .nav {
+//     position: fixed;
+//     left: 0;
+//     top: 0;
+//     width: 2rem;
+//     height: 100%;
+//     padding: 1rem 0 1.4rem;
+//     z-index: 6;
+// }.nav ul {
+//     height: 100%;
+//     background: #FFFFFF;
+//     overflow-y: auto;
+// }.nav ul li.on {
+//     background: #F6F6F6;
+// }.nav ul li {
+//     line-height: .99rem;
+//     border-bottom: 1px #f6f6f6 solid;
+//     text-align: center;
+// }.nav ul li.on a {
+//     color: #C01414;
+// }.nav ul li a {
+//     display: block;
+//     color: #444444;
+//     font-size: .3rem;
+// }
+// .gdlist {
+//     padding: .2rem .2rem 0 2.2rem;
+//     ul{
+//       background: #FFFFFF;
+//     margin-top: .2rem;
+//     padding-bottom: .2rem;
+//     li {
+//     float: left;
+//     width: 1.6rem;
+//     margin: .2rem .2rem 0;
+// }
+//     }
+// }
 </style>

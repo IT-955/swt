@@ -1,13 +1,19 @@
 <template>
   <div>
     <div class="header">
-      <a href class="back_btn"></a>
+      <a class="back_btn" @click="goback"></a>
       <div class="h_tit">注册</div>
     </div>
     <div class="login login2 deg">
       <form action="" method="post" onsubmit="return checkForm()">
         <div class="box clearfix">
-          <input type="text" class="text" id="mobile_phone" name="mobile_phone" placeholder="手机号" />
+          <input
+            type="text"
+            class="text"
+            id="mobile_phone"
+            name="mobile_phone"
+            placeholder="手机号"
+          />
           <!--<div class="yzm" onclick="getCode(1,$(this));">发送验证码</div>-->
           <input
             class="yzm text"
@@ -17,27 +23,39 @@
             value="发送验证码"
           />
         </div>
-        <input type="text" class="text" placeholder="验证码" name="mobile_code" id="mobile_code" />
-        <input type="password" class="text" name="pwd" id="pwd" placeholder="密码" />
-        <input type="password" class="text" name="qr_pwd" id="qr_pwd" placeholder="确认密码" />
+        <input
+          type="text"
+          class="text"
+          placeholder="验证码"
+          name="mobile_code"
+          id="mobile_code"
+        />
+        <input
+          type="password"
+          class="text"
+          name="pwd"
+          id="pwd"
+          placeholder="密码"
+        />
+        <input
+          type="password"
+          class="text"
+          name="qr_pwd"
+          id="qr_pwd"
+          placeholder="确认密码"
+        />
         <label>
           我已阅读并同意
           <input type="hidden" name="agreement" id="agreement" value="1" />
-          <a
-            href="javascript:void (0);"
-            onclick=""
-          >《用户协议》</a>
+          <a href="javascript:void (0);" onclick="">《用户协议》</a>
           与
-          <a
-            href="javascript:void (0);"
-            onclick=""
-          >《用户服务》</a>
+          <a href="javascript:void (0);" onclick="">《用户服务》</a>
         </label>
         <input type="button" value="" name="back_url" />
-        <input type="button" class="button" value="注册" />
+        <input type="button" class="button" @click="sign" value="注册" />
       </form>
       <div class="l_btn">
-        <a href="">账号登录</a>
+        <a @click="go">账号登录</a>
       </div>
     </div>
   </div>
@@ -51,7 +69,17 @@ export default {
 
   components: {},
 
-  methods: {}
+  methods: {
+    goback() {
+      this.$router.back();
+    },
+    go() {
+      this.$router.push("/login");
+    },
+    sign() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -117,6 +145,7 @@ form {
   float: left;
   margin: 0;
   box-shadow: none;
+  padding: 0;
 }
 .login .text,
 .login .box {
@@ -141,7 +170,7 @@ form {
 }
 .login2 .box .text {
   width: 2.5rem;
-//   float: left;
+  //   float: left;
   margin: 0;
   box-shadow: none;
 }
@@ -228,5 +257,11 @@ a:link {
 }
 .l_btn a {
   color: #999999;
+}
+.deg label.on:before {
+    content: '';
+    border-color: #C01414;
+    background: #C01414 url(../../assets/img/g.jpg) center no-repeat;
+    background-size: .2rem .14rem;
 }
 </style>

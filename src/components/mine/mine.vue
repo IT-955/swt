@@ -2,7 +2,7 @@
   <div>
     <!-- header -->
     <div class="header">
-      <a href="javascript:history.go(-1)" class="back_btn wapGoToBack"></a>
+      <a class="back_btn wapGoToBack" @click="goback"></a>
       <div class="h_tit">我的</div>
       <a href class="mes_ic">
         <b>0</b>
@@ -146,7 +146,11 @@ export default {
 
   components: {},
 
-  methods: {}
+  methods: {
+    goback(){
+      this.$router.back()
+    }
+  }
 };
 </script>
 

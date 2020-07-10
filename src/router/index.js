@@ -4,8 +4,13 @@ import list from "../views/list";
 import Goodslist from "../components/List/goodslist";
 import home from "../views/home/index";
 import login from "../views/login/index";
+import sign from "../components/login/sign";
+import unpwd from "../components/login/unpwd";
+import sms from "../components/login/sms";
+import forterpwd from "../components/login/forterpwd";
 import mine from "../views/mine/index";
 import detail from "../components/List/detail";
+import Spcar from "../components/spcar";
 
 
 Vue.use(VueRouter);
@@ -17,7 +22,7 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    component: home
+    component: home,
   },
   {
     name: 'list',
@@ -25,6 +30,7 @@ const routes = [
     component: list
   },
   {
+    name: 'Goodslist',
     path: '/Goodslist',
     component: Goodslist,
   },
@@ -35,6 +41,27 @@ const routes = [
   { name:"login",
     path: '/login',
     component: login,
+  },
+  { name:"sign",
+    path: '/sign',
+    component: sign,
+  },
+  { name:"unpwd",
+    path: '/unpwd',
+    component: unpwd,
+  },
+  { name:"sms",
+    path: '/sms',
+    component: sms,
+  },
+  { name:"forterpwd",
+    path: '/forterpwd',
+    component: forterpwd,
+  },
+  {
+    name: 'spcar',
+    path: '/spcar',
+    component: Spcar,
   },
   {
     path: '/detail/:id',

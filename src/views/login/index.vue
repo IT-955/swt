@@ -1,8 +1,8 @@
 <template>
   <div>
     <Login />
-    <!-- <Sign /> -->
-    <!-- <Unpwd /> -->
+    <!-- <Sign />
+    <Unpwd /> -->
   </div>
 </template>
 

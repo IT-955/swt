@@ -2,14 +2,16 @@
   <div class="footer">
     <ul>
       <li
-        v-for="(item,index) in dtlist"
+        v-for="(item, index) in dtlist"
         :key="index"
         @click="tab(index)"
-        :class="active==index?'on':''"
+        :class="active == index ? 'on' : ''"
       >
         <el-button type="primary" :icon="item.icon"></el-button>
+
         <p>{{ item.p }}</p>
       </li>
+      <span class="tit">{{ spcarnum }}</span>
     </ul>
   </div>
 </template>
@@ -36,11 +38,10 @@ export default {
           p: "我的"
         }
       ],
-      active: 0
+      active: 0,
+      spcarnum: this.$store.state.cart.cartList.length
     };
   },
-
-  components: {},
 
   methods: {
     tab(index) {
@@ -51,21 +52,47 @@ export default {
         this.$router.push("/list");
         this.active = 1;
       } else if (index == 3) {
-        this.$router.push("/mine");
+        this.$router.push("/login");
         this.active = 3;
+      } else if (index == 2) {
+        this.$router.push("/spcar");
+        this.active = 2;
       }
       this.active = index;
     }
+    // updatasp() {
+    //   const { cartList } = this.$store.state.cart;
+    //   this.spcarnum = cartList.length;
+    // }
   },
   created() {
+    // this.updatasp();
     if (this.$route.name == "home") {
       this.active = 0;
-    } else if (this.$route.name == "list") {
+    } else if (this.$route.name == "list" || this.$route.name == "Goodslist") {
       this.active = 1;
-    } else if (this.$route.name == "mine") {
+    } else if (this.$route.name == "login") {
       this.active = 3;
+    } else if (this.$route.name == "spcar") {
+      this.active = 2;
     }
+  },
+  updated() {
+    // this.updatasp();
   }
+
+  // computed: {
+  //   spnum: {
+  //     get() {
+  //       return this.spcarnum;
+  //     },
+  //     set(val) {
+  //       const { cartList } = this.$store.state.cart;
+  //       this.spcarnum = cartList.length;
+  //       console.log(val);
+  //     }
+  //   }
+  // }
 };
 </script>
 
@@ -101,6 +128,19 @@ export default {
         padding: 0;
         margin: 0;
       }
+    }
+    .tit {
+      width: 0.3rem;
+      height: 0.3rem;
+      display: block;
+      position: absolute;
+      left: 5.5rem;
+      top: 0;
+      background-color: red;
+      border-radius: 100%;
+      color: white;
+      text-align: center;
+      font-weight: 900;
     }
   }
 }

@@ -4,11 +4,11 @@
       <a class="back" @click="back"></a>
       <ul class="topnav">
         <li
-          v-for="(item,index) in tblist"
+          v-for="(item, index) in tblist"
           :key="index"
-          :class="active==index?'on':''"
-          @click="tab(index)"
-        >{{item}}</li>
+          :class="active == index ? 'on' : ''"
+          @click="tab('#anchor-' + index)"
+        >{{ item }}</li>
       </ul>
       <a class="share" @click="drawer = true"></a>
       <el-drawer
@@ -22,7 +22,7 @@
       >
         <h2>分享到</h2>
         <div class="sharebox">
-          <img v-for="(item,index) in iconlist" :key="index" :src="item" class="icon" />
+          <img v-for="(item, index) in iconlist" :key="index" :src="item" class="icon" />
         </div>
       </el-drawer>
     </div>
@@ -121,7 +121,7 @@
           <input type="button" value="确认" @click="drawer2 = false" />
         </div>
       </el-drawer>
-
+      <!-- 评论 -->
       <div class="pinglun">
         <div class="gdscomm">
           <a>商品评论(0)</a>
@@ -156,8 +156,8 @@
             <p>收藏</p>
           </a>
         </li>
-        <li>
-          <el-badge :value="0" class="item">
+        <li @click="jumpcart">
+          <el-badge :value="spcarnum" class="item">
             <a>
               <i></i>
               <p>购物车</p>
@@ -166,7 +166,7 @@
         </li>
       </ul>
       <div class="fr">
-        <a>加入购物车</a>
+        <a @click="addcart">加入购物车</a>
         <a>立刻购买</a>
       </div>
     </div>
@@ -178,10 +178,24 @@ export default {
   data() {
     return {
       tblist: ["商品", "评论", "详情"],
+      gdsdata: [
+        {
+          id: this.$store.state.length + 1,
+          name: "海南海口 海南椰青 多规格多选择",
+          imgurl:
+            "https://oss.swt100.com/old_images/images/201908/thumb_img/301_thumb_G_1565858447469.jpg",
+          price: 35.0,
+          size: "2个装",
+          qty: 10,
+          gdsnum: 1,
+          singtrue: false
+        }
+      ],
       active: 0,
       drawer: false,
       drawer2: false,
       direction: "rtl",
+      spcarnum: 0,
       iconlist: [
         require("../../assets/List/weibo.png"),
         require("../../assets/List/weixin.png"),
@@ -199,19 +213,35 @@ export default {
   },
 
   components: {},
-
+  created() {
+    const { cartList } = this.$store.state.cart;
+    this.spcarnum = cartList.length;
+  },
+  updated() {
+    const { cartList } = this.$store.state.cart;
+    this.spcarnum = cartList.length;
+  },
   methods: {
     back() {
       this.$router.back();
     },
     tab(index) {
-      this.active = index;
+      this.active = index.slice(8, 9);
+      console.log(this.$el.querySelector(index));
     },
     handleClose(done) {
       done();
     },
     onChange(index) {
       this.current = index;
+    },
+    jumpcart() {
+      this.$router.push("/spcar");
+    },
+    addcart() {
+      this.$store.commit("addItem", this.gdsdata[0]);
+      const { cartList } = this.$store.state.cart;
+      this.spcarnum = cartList.length;
     }
   }
 };
@@ -245,6 +275,7 @@ export default {
     box-sizing: content-box;
     display: flex;
     justify-content: center;
+    z-index: 999;
     img {
       width: 1.4rem;
       margin: 0 0.2rem;
@@ -602,7 +633,7 @@ export default {
 .foot {
   height: 1.2rem;
   position: fixed;
-  z-index: 9;
+  z-index: 2;
   left: 0;
   bottom: 0;
   width: 100%;

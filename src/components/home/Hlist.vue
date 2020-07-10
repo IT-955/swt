@@ -15,16 +15,16 @@ export default {
       listimg: [
         {
           pic:
-            "https://oss.swt100.com/images/mad/20200624/7466657587e969cc72511e37c92a2cbf1217d184.jpg"
+            "https://oss.swt100.com/images/mad/20200707/509cbe5f7d99a1fa90fb20445926ce9305cd93e6.jpg"
         },
         {
-          pic: "https://oss.swt100.com/images/mad/20200624/fca1861beb02b41689a0575e8e7fd703ca4b9170.jpg"
+          pic: "https://oss.swt100.com/images/mad/20200707/a57d085659719055b1352312ba9359907e7b6ceb.jpg"
         },
         {
-          pic: "https://oss.swt100.com/images/mad/20200624/c0eb400ee668ef8a69e4990ba5b2280d3a594e34.jpg"
+          pic: "https://oss.swt100.com/images/mad/20200707/e6aef20eb841471c45c7f59978d92e52f4cfc361.jpg"
         },
         {
-          pic: "https://oss.swt100.com/images/mad/20200624/fc7eb6ea07496af4f1a3885e2a8847df29da1da1.jpg"
+          pic: "https://oss.swt100.com/images/mad/20200707/c43ac864273242ea7145c4cafaff7df4184f3218.jpg"
         },
       ]
     };

@@ -2,43 +2,42 @@
   <div>
     <div class="header">
       <a class="back_btn" @click="goback"></a>
-      <div class="h_tit">登录</div>
+      <div class="h_tit">快捷登录</div>
     </div>
-
-    <div class="login">
-      <form method="post" onsubmit="return checkForm()">
-        <input type="hidden" name="back_url" />
+    <div class="login login2">
+      <form action="" method="post" onsubmit="return checkForm()">
         <input
           type="text"
-          name="username"
-          id="username"
           class="text"
+          name="mobile_phone"
           placeholder="请输入手机号"
         />
-        <input
-          type="password"
-          name="pwd"
-          id="pwd"
-          class="text"
-          placeholder="请输入密码"
-        />
-        <input type="button" class="button" @click="gomine"  value="登录" />
+        <div class="box clearfix">
+          <input
+            type="text"
+            class="text"
+            name="mobile_code"
+            id="mobile_code"
+            placeholder="请输入手机验证码"
+          />
+          <div class="yzm">获取验证码</div>
+        </div>
+        <input type="submit" class="button" value="登录" />
       </form>
       <ul class="clearfix link">
-        <li><a @click="sign">立即注册</a></li>
-        <li><a @click="unpwd">忘记密码</a></li>
+        <li style=""><a>立即注册</a></li>
       </ul>
     </div>
-
     <div class="other">
       <div class="tit"><em>其他登录方式</em></div>
       <ul class="clearfix">
-        <li class="text">
-          <a @click="sms"><i><img src="../../assets/img/login_message.png"/></i>短信验证</a
+        <li>
+          <a @click="back"
+            ><i><img src="../../assets/img/login_account.png"/></i>账号密码</a
           >
         </li>
-        <li class="text2">
-          <a href=""
+        <li>
+          <a
             ><i><img src="../../assets/img/wechat.png"/></i>微信</a
           >
         </li>
@@ -59,40 +58,14 @@ export default {
     goback() {
       this.$router.back();
     },
-    sign() {
-      this.$router.push('/sign');
+    back() {
+      this.$router.back();
     },
-    unpwd() {
-      this.$router.push('/unpwd');
-    },
-    sms() {
-      this.$router.push('/sms');
-    },
-    gomine(){
-      this.$router.push('/mine')
-    }
   },
 };
 </script>
 
 <style scoped lang="scss">
-a,
-a:link {
-  text-decoration: none;
-  cursor: pointer;
-}
-body {
-  font-family: Arial, "微软雅黑";
-  color: #000;
-  line-height: 1.3;
-  font-size: 0.24rem;
-  width: 100%;
-  max-width: 840px;
-  margin: 0 auto;
-  opacity: 0;
-  background: #eeeeee;
-  padding-top: 1rem;
-}
 .header {
   height: 1rem;
   background: #c01414;
@@ -133,6 +106,60 @@ body {
   box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
   border: none;
 }
+.login .box {
+  padding: 0;
+}
+.login .text,
+.login .box {
+  width: 100%;
+  margin-top: 0.6rem;
+  background: #ffffff;
+  font-size: 0.36rem;
+  color: #333333;
+  height: 1.2rem;
+  border-radius: 1.2rem;
+  padding: 0 0.6rem;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.login2 .box .text {
+  width: 2.9rem;
+  float: left;
+  margin: 0;
+  box-shadow: none;
+  padding: 0;
+}
+.login .text,
+.login .box {
+  width: 84%;
+  margin-top: 0.6rem;
+  background: #ffffff;
+  font-size: 0.36rem;
+  color: #333333;
+  height: 1.2rem;
+  border-radius: 1.2rem;
+  padding: 0 0.6rem;
+  box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.login2 .box .yzm {
+  float: right;
+  font-size: 0.36rem;
+  color: #c01414;
+  width: 1.8rem;
+  text-align: center;
+  line-height: 1.2rem;
+  margin: 0;
+}
+.clearfix:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  font-size: 0;
+}
 .login .button {
   border: none;
   display: block;
@@ -147,11 +174,11 @@ body {
 .login .link {
   padding-top: 0.65rem;
 }
-.login .link li {
-  padding: 0 0.4rem;
+.login2 .link li {
+  padding: 0;
 }
 .login .link li {
-  padding: 0 0.4rem;
+  padding: 0 0.3rem;
   position: relative;
   font-size: 0.3rem;
   color: #999999;
@@ -160,21 +187,6 @@ body {
 }
 .login .link li a {
   color: #999999;
-}
-.login .link li:after {
-  content: "|";
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-.login .clearfix:after {
-  content: ".";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  font-size: 0;
 }
 .other {
   text-align: center;
@@ -229,9 +241,6 @@ body {
 img {
   vertical-align: middle;
   width: 100%;
-}
-.other {
-  text-align: center;
-  padding-top: 1rem;
+  border: 0;
 }
 </style>

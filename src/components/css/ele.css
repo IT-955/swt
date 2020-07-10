@@ -1,0 +1,10 @@
+.el-input-number--mini {
+    float: right !important;
+    width: 1.8rem;
+    height: 0.5rem;
+}
+
+.el-input-number__decrease,
+.el-input-number__increase {
+    background: #fff
+}
